@@ -1,0 +1,57 @@
+on init
+    export EXTERNAL_STORAGE /mnt/sdcard
+    symlink /mnt/sdcard /storage/sdcard0
+    symlink /mnt/sdcard /sdcard
+
+    # mount debugfs
+    mount debugfs /sys/kernel/debug /sys/kernel/debug
+
+# power management
+# Enable off mode by default
+    #write /sys/kernel/debug/pm_debug/enable_off_mode 1
+
+on boot
+
+    insmod /modules/usb-common.ko
+    insmod /modules/usbcore.ko
+    insmod /modules/f_usb20hdc-hcd.ko
+    insmod /modules/hid.ko
+    insmod /modules/hid-generic.ko
+    insmod /modules/usbhid.ko
+    insmod /modules/af_packet.ko
+    insmod /modules/unix.ko
+    insmod /modules/tun.ko
+    insmod /modules/logger.ko
+    insmod /modules/evdev.ko
+    insmod /modules/vfat.ko
+
+    # create dhcpcd dir
+    mkdir /data/misc/dhcp 0770 dhcp dhcp
+    chmod 0770 /data/misc/dhcp
+
+    # change permissions for alsa nodes
+    #chmod 0777 /dev/snd/pcmC0D0c
+    #chmod 0777 /dev/snd/pcmC0D0p
+    #chmod 0777 /dev/snd/controlC0
+    #chmod 0777 /dev/snd/timer
+
+    #change permissions for alsa nodes for audio modem
+    #chmod 0777 /dev/snd/pcmC0D5c
+    #chmod 0777 /dev/snd/pcmC0D5p
+
+    #change permissions for alsa nodes for HDMI
+    #chmod 777  /dev/snd/pcmC0D7p
+
+    chown system system /sys/class/graphics/fb0/overlays
+    chown system system /sys/class/graphics/fb0/fit_to_screen
+    #chown system system /sys/class/graphics/fb1/overlays
+
+on fs
+    mount_all /fstab.fujitsusemiconductormb8ac0300-e
+
+# hack to start networking early during boot, this will enable use of
+# ADB and gator without further manual intervention
+service netcfghack /system/bin/netcfg eth0 dhcp
+    class main
+    user root
+    oneshot
