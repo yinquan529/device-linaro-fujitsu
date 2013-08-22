@@ -28,6 +28,7 @@ TARGET_ARCH := arm
 # Enable NEON feature
 TARGET_ARCH_VARIANT := armv7-a-neon
 ARCH_ARM_HAVE_TLS_REGISTER := true
+TARGET_CPU_VARIANT := cortex-a9
 
 EXTRA_PACKAGE_MANAGEMENT := false
 

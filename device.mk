@@ -1,6 +1,5 @@
 PRODUCT_COPY_FILES := \
     device/linaro/fujitsu/fstab.fujitsusemiconductormb8ac0300-e:root/fstab.fujitsusemiconductormb8ac0300-e \
-    device/linaro/fujitsu/vold.fstab:system/etc/vold.fstab \
     device/linaro/fujitsu/egl.cfg:system/lib/egl/egl.cfg
 
 PRODUCT_COPY_FILES += \
