@@ -12,6 +12,7 @@ on init
 
 on boot
 
+    insmod /modules/nls_base.ko
     insmod /modules/usb-common.ko
     insmod /modules/usbcore.ko
     insmod /modules/f_usb20hdc-hcd.ko
@@ -24,6 +25,13 @@ on boot
     insmod /modules/logger.ko
     insmod /modules/evdev.ko
     insmod /modules/vfat.ko
+    insmod /modules/fdb.ko
+    insmod /modules/f_mb8ac0300_dpi.ko
+    insmod /modules/picapdc-fb.ko
+    insmod /modules/cfbfillrect.ko
+    insmod /modules/cfbimgblt.ko
+    insmod /modules/f_mb8ac0300_dvi.ko
+    insmod /modules/cfbcopyarea.ko
 
     # create dhcpcd dir
     mkdir /data/misc/dhcp 0770 dhcp dhcp
