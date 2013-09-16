@@ -33,6 +33,7 @@ on boot
     insmod /modules/f_mb8ac0300_dvi.ko
     insmod /modules/cfbcopyarea.ko
     insmod /modules/picapdc-fb.ko
+    insmod /modules/mii.ko
     insmod /modules/fgmac4.ko
 
     # create dhcpcd dir
