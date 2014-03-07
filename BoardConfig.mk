@@ -40,7 +40,7 @@ TARGET_CPU_SMP := true
 # ARMs gator (DS-5)
 TARGET_USE_GATOR:= true
 
-KERNEL_CONFIG :=  arch/arm/configs/fujitsu_defconfig linaro/configs/android.conf
+KERNEL_CONFIG :=  arch/arm/configs/fujitsu_defconfig
 
 DEVICE_TREES := mb8ac0300eb:mb8ac0300eb.dtb \
 
